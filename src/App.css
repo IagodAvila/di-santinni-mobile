@@ -10,6 +10,10 @@
   background-color: #ffffff;
 }
 
+.app main {
+  padding-bottom: 101px;
+}
+
 .cart_confirmation {
   position: fixed;
   top: 126px;

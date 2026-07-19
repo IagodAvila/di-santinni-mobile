@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { House, ShoppingBag, Ticket, Menu, UserRound } from "lucide-react";
+import { House, ShoppingBag, CreditCard, UserRound } from "lucide-react";
 import "./BottomNavigation.css";
 
 const navigationItems = [
   { id: "home", label: "Início", icon: House },
   { id: "bag", label: "Sacola", icon: ShoppingBag },
-  { id: "coupon", label: "Cupons", icon: Ticket },
-  { id: "menu", label: "Menu", icon: Menu },
+  { id: "club", label: "Clube DS Mais", icon: null },
+  { id: "card", label: "Cartão", icon: CreditCard },
   { id: "profile", label: "Perfil", icon: UserRound },
 ];
 
@@ -28,13 +28,24 @@ function BottomNavigation() {
                 isActive ? "bottom_navigation_button_active" : ""
               }`}
               aria-label={item.label}
+              aria-pressed={isActive}
               onClick={() => setActiveItem(item.id)}
             >
-              <Icon
-                size={24}
-                strokeWidth={1.7}
-                fill={item.id === "home" && isActive ? "currentColor" : "none"}
-              />
+              {item.id === "club" ? (
+                <span className="bottom_navigation_ds_plus" aria-hidden="true">
+                  <span className="bottom_navigation_ds_box">DS</span>
+
+                  <span className="bottom_navigation_plus">+</span>
+                </span>
+              ) : (
+                <Icon
+                  size={item.id === "home" ? 23 : 21}
+                  strokeWidth={1.4}
+                  fill={
+                    item.id === "home" && isActive ? "currentColor" : "none"
+                  }
+                />
+              )}
             </button>
           );
         })}
