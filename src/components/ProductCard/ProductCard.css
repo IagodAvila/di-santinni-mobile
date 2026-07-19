@@ -1,0 +1,274 @@
+.product_card {
+    width: 169px;
+    height: 336px;
+    flex: 0 0 169px;
+
+    overflow: hidden;
+    background-color: #fafaf8;
+    border-radius: 24px;
+    box-shadow: 0 3px 8px rgb(0, 0, 0, 0.05);
+}
+
+.product_card_media {
+    position: relative;
+
+    width: 100%;
+    height: 156px;
+
+    overflow: hidden;
+    background-color: #f6f6f6;
+    
+}
+
+.product_card_discount {
+    position: absolute;
+    top: 12px;
+    left: 9px;
+    z-index: 2;
+
+    height: 16px;
+    padding: 0 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #fafaf8;
+    background-color: #c8102e;
+    border-radius: 100px;
+
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.product_card_favorite {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    z-index: 2;
+
+    width: 19px;
+    height: 19px;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #555555;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.product_card_favorite svg {
+    transition: color 150ms ease, fill 150ms ease, transform 150ms ease;
+}
+
+.product_card_favorite:active svg {
+    transform: scale(0.88);
+}
+
+.product_card_image {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+
+    width: 143px;
+    height: 77px;
+
+    display: block;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+
+    transform: translateX(-50%);
+}
+
+.product_card_content {
+    height: 180px;
+    padding: 9px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    }
+
+.product_card_brand {
+    margin: 0 0 3px;
+
+    color: #888888;
+    font-size: 8px;
+    font-weight: 400;
+    letter-spacing: 0.15px;
+    text-transform: uppercase;
+}
+
+.product_card_name {
+    height: 29px;
+    margin: 0;
+
+    overflow: hidden;
+
+    color: #000000;
+    font-size: 10.5px;
+    font-weight: 400;
+    line-height: 11.5px;
+    letter-spacing: 0.21px;
+}
+
+.product_card_prices {
+    margin-top: 9px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.product_card_old_price {
+    color: #888888;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 13px;
+    text-decoration: line-through;
+}
+
+.product_card_price {
+    color: #c8102e;
+    font-size: 11.5px;
+    font-weight: 600;
+    line-height: 14px;
+}
+
+.product_card_club {
+    margin: 3px 0 0;
+
+    color: #555555;
+    font-size: 8px;
+    line-height: 12px;
+}
+
+.product_card_club strong {
+    color: #c89b2a;
+    font-size: 9px;
+    font-weight: 400;
+}
+
+.product_card_installments {
+    margin: 3px 0 0;
+
+    color: #888888;
+    font-size: 7px;
+    line-height: 12px;
+}
+
+.product_card_buy {
+    width: 100%;
+    height: 26px;
+    margin-top: auto;
+    padding: 0;
+
+    color: #ffffff;
+    background-color: #c8102e;
+    border: none;
+    border-radius: 100px;
+
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.21px;
+
+    cursor: pointer;
+}
+
+.product_card_large {
+  width: 224px;
+  height: 445px;
+  flex: 0 0 224px;
+}
+
+.product_card_large .product_card_media {
+  height: 207px;
+}
+
+.product_card_large .product_card_discount {
+  top: 16px;
+  left: 12px;
+
+  height: 21px;
+  padding: 0 10px;
+
+  font-size: 14px;
+}
+
+.product_card_large .product_card_favorite {
+  top: 16px;
+  right: 24px;
+
+  width: 25px;
+  height: 25px;
+}
+
+.product_card_large .product_card_image {
+  top: 66px;
+
+  width: 190px;
+  height: 102px;
+}
+
+.product_card_large .product_card_content {
+  height: 238px;
+  padding: 12px;
+}
+
+.product_card_large .product_card_brand {
+  margin-bottom: 4px;
+
+  font-size: 10px;
+  letter-spacing: 0.2px;
+}
+
+.product_card_large .product_card_name {
+  height: 39px;
+
+  font-size: 14px;
+  line-height: 15px;
+  letter-spacing: 0.28px;
+}
+
+.product_card_large .product_card_prices {
+  margin-top: 12px;
+}
+
+.product_card_large .product_card_old_price {
+  font-size: 10px;
+  line-height: 14px;
+}
+
+.product_card_large .product_card_price {
+  font-size: 15px;
+  line-height: 18px;
+}
+
+.product_card_large .product_card_club {
+  margin-top: 4px;
+
+  font-size: 12px;
+  line-height: 22px;
+}
+
+.product_card_large .product_card_club strong {
+  font-size: 12px;
+}
+
+.product_card_large .product_card_installments {
+  margin-top: 0;
+
+  font-size: 9px;
+  line-height: 16px;
+}
+
+.product_card_large .product_card_buy {
+  height: 34px;
+
+  font-size: 14px;
+  letter-spacing: 0.28px;
+}

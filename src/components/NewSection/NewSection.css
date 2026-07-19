@@ -1,0 +1,68 @@
+.news_section {
+  width: 100%;
+  padding-top: 35px;
+  padding-bottom: 32px;
+
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.news_section_title {
+  margin: 0;
+  padding: 0 17px;
+
+  color: #0c0c0c;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0.4px;
+}
+
+.news_carousel_wrapper {
+  position: relative;
+  margin-top: 20px;
+}
+
+.news_carousel {
+  display: flex;
+  gap: 14px;
+
+  padding: 0 17px;
+
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 17px;
+  scrollbar-width: none;
+}
+
+.news_carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.news_carousel .product_card {
+  scroll-snap-align: start;
+}
+
+.news_carousel_arrow {
+  position: absolute;
+  top: 210px;
+  right: 10px;
+  z-index: 3;
+
+  width: 24px;
+  height: 24px;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #c8102e;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+
+  cursor: pointer;
+}

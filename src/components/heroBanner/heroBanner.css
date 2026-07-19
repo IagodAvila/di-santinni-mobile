@@ -1,0 +1,158 @@
+.hero {
+    position: relative;
+
+    width: 100%;
+    height: 590px;
+
+    overflow: hidden;
+    background-color: #0879ad;
+    touch-action: pan-y;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    pointer-events: none;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 48%,
+        rgba(0, 0, 0, 0.34) 78%,
+        rgba(0, 0, 0, 0.12) 100%
+    );
+}
+
+.hero_image {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    user-select: none;
+
+    animation: hero_image_enter 260ms ease-out;
+}
+
+@keyframes hero_image_enter {
+    from {
+        opacity: 0.45;
+        transform: scale(1.015);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.hero_offer {
+    position: absolute;
+    top: 396px;
+    left: 47px;
+
+    width: 280px;
+
+    color: #fafaf8;
+}
+
+.hero_offer_top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.hero_old_price {
+   font-size: 18.34px;
+   font-weight: 400;
+   line-height: 19px;
+   letter-spacing: 0.73px;
+   text-decoration: line-through;
+}
+
+.hero_discount {
+    height: 20px;
+    padding: 0 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fafaf8;
+    background-color: #c8102e;
+    border-radius: 100px;
+
+    font-size: 10.7px;
+    font-weight: 600;
+    letter-spacing: 0.21px;
+    white-space: nowrap;
+}
+
+.hero_price {
+    display: block;
+    margin-top: 12px;
+
+    color: #fafaf8;
+    font-size: 55px;
+    font-weight: 900;
+    line-height: 0.8;
+    letter-spacing: 1.1px;
+    white-space: nowrap;
+}
+
+.hero_button {
+    position: absolute;
+    top: 484px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 115px;
+    height: 32px;
+    padding: 0;
+
+    color: #fafaf8;
+    background-color: #c8102e;
+    border: none;
+    border-radius: 100px;
+
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.24px;
+    cursor: pointer;
+}
+
+.hero_dots {
+    position: absolute;
+    top:  547px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.hero_dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+
+    background-color: #fafaf8;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.hero_dot_active {
+    background-color: #c8012e;
+}
+
+.hero_offer,
+.hero_button,
+.hero_dots {
+    z-index: 2;
+}

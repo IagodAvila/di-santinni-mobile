@@ -1,0 +1,44 @@
+.brand_showcase {
+  width: 100%;
+  padding-top: 8px;
+  padding-bottom: 32px;
+  overflow: hidden;
+  background-color: #f2f2f0;
+}
+.brand_carousel {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 0 15px;
+
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-inline: contain;
+  -webkit-overflow-scrolling: touch;
+  scroll-padding-inline: 15px;
+}
+
+.brand_carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.brand_card {
+  width: 154.5px;
+  height: 213px;
+  flex: 0 0 154.5px;
+
+  overflow: hidden;
+  border-radius: 16px;
+  scroll-snap-align: start;
+}
+
+.brand_card_image {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+  object-fit: cover;
+}

@@ -1,0 +1,47 @@
+.bottom_navigation {
+    width: 100%;
+    height: 101px;
+    padding: 8px 16px;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: #ffffff;
+}
+
+.bottom_navigation_items {
+    width: 100%;
+    height: 56px;
+
+    display: flex;
+    align-items: center;
+    
+}
+
+.bottom_navigation_button {
+    flex: 1;
+    height: 48px;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #8c8c8c;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    }
+
+.bottom_navigation_button_active {
+    color: #c8102e;
+}
+
+.bottom_navigation_indicator {
+    width: 134px;
+    height: 5px;
+    margin: auto auto 0;
+
+    background-color: #c8102e;
+    border-radius: 999px;
+}
