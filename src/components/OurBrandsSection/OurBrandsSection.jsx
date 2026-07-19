@@ -36,6 +36,31 @@ const brandProductsByBrand = Object.fromEntries(
   ]),
 );
 
+brandProductsByBrand.Mizuno = [
+  {
+    id: "mizuno-1",
+    image: mizunoImage,
+    brand: "Mizuno",
+    name: "Tênis Mizuno Wave Endeavor 3",
+    discount: "-20%",
+    oldPrice: "R$ 799,00",
+    price: "R$ 499,90",
+    clubPrice: "R$ 399,00",
+    installments: "5x de R$ 100,00",
+  },
+  {
+    id: "mizuno-2",
+    image: mizunoImage,
+    brand: "Mizuno",
+    name: "Tênis Mizuno Wave Endeavor 3",
+    discount: "-20%",
+    oldPrice: "R$ 799,00",
+    price: "R$ 499,90",
+    clubPrice: "R$ 399,00",
+    installments: "5x de R$ 100,00",
+  },
+];
+
 function OurBrandsSection({ onAddToCart }) {
   const [activeBrand, setActiveBrand] = useState("Mizuno");
   const brandProducts = brandProductsByBrand[activeBrand];

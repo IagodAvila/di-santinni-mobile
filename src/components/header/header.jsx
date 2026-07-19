@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { Search, ShoppingBag, X } from "lucide-react";
+import { X } from "lucide-react";
 import logoDiSantinni from "../../assets/di_santinni_logo.png";
+import searchIcon from "../../assets/search_icon.svg";
+import shoppingCartIcon from "../../assets/shopping_cart.svg";
 import "./header.css";
 
 function Header({ cartCount }) {
@@ -24,7 +26,7 @@ function Header({ cartCount }) {
         aria-controls="mobile-search"
         onClick={() => setIsSearchOpen((isOpen) => !isOpen)}
       >
-        <Search size={20} strokeWidth={1.4} />
+        <img className="header_icon" src={searchIcon} alt="" />
       </button>
 
       <img
@@ -38,7 +40,7 @@ function Header({ cartCount }) {
         type="button"
         aria-label="Abrir sacola de compras"
       >
-        <ShoppingBag size={20} strokeWidth={1.4} />
+        <img className="header_icon" src={shoppingCartIcon} alt="" />
 
         <span className="header_badge" aria-label={`${cartCount} itens`}>
           {cartCount}
@@ -52,7 +54,7 @@ function Header({ cartCount }) {
           role="search"
           onSubmit={(event) => event.preventDefault()}
         >
-          <Search size={18} strokeWidth={1.6} aria-hidden="true" />
+          <img className="header_search_icon" src={searchIcon} alt="" />
           <input
             ref={searchInputRef}
             type="search"

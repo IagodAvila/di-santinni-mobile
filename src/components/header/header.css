@@ -84,6 +84,19 @@
   cursor: pointer;
 }
 
+.header_icon {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.header_search_icon {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  display: block;
+}
+
 .header_logo {
   display: block;
   width: 161.25px;
