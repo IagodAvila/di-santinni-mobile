@@ -1,5 +1,6 @@
 .product_showcase {
   width: 100%;
+  scroll-margin-top: 68px;
   padding-top: 44px;
   overflow: hidden;
   background: linear-gradient(
@@ -82,4 +83,15 @@
 
 .product_showcase_content .product_card {
   scroll-snap-align: start;
+}
+
+.product_search_summary {
+  min-height: 36px;
+  margin: 0 16px;
+
+  color: #2c2c2c;
+  border-bottom: 1px solid #dddddd;
+
+  font-size: 14px;
+  line-height: 24px;
 }
