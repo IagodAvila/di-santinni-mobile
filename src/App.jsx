@@ -11,25 +11,56 @@ import OurBrandsSection from "./components/OurBrandsSection/OurBrandsSection";
 import NewSection from "./components/NewSection/NewSection";
 import PromoBanner from "./components/PromoBanner/PromoBanner";
 import BottomNavigation from "./components/BottomNavigation/BottomNavigation";
+import Cart from "./components/Cart/Cart";
+import mizunoImage from "./assets/products/mizuno-wave.png";
+
+let nextCartItemId = 2;
 
 function App() {
-  const [cartCount, setCartCount] = useState(1);
+  const [cartItems, setCartItems] = useState([
+    {
+      id: 1,
+      name: "Tênis Mizuno Wave Endeavor 3",
+      price: "R$ 499,90",
+      image: mizunoImage,
+    },
+  ]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [confirmation, setConfirmation] = useState("");
   const productsRef = useRef(null);
+  const cartRef = useRef(null);
   const confirmationTimerRef = useRef(null);
 
   useEffect(() => {
     return () => clearTimeout(confirmationTimerRef.current);
   }, []);
 
-  function handleAddToCart(productName) {
-    setCartCount((currentCount) => currentCount + 1);
-    setConfirmation(`${productName} foi adicionado à sacola.`);
+  function showMessage(message) {
+    setConfirmation(message);
 
     clearTimeout(confirmationTimerRef.current);
     confirmationTimerRef.current = setTimeout(() => {
       setConfirmation("");
     }, 2800);
+  }
+
+  function handleNavigate(item) {
+    if (item.id === "home") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (item.id === "bag") {
+      cartRef.current?.showModal();
+    } else {
+      showMessage(`${item.label} estará disponível em breve.`);
+    }
+  }
+
+  function handleAddToCart(product) {
+    setCartItems((items) => [...items, { ...product, id: nextCartItemId++ }]);
+    showMessage(`${product.name} foi adicionado à sacola.`);
+  }
+
+  function handleRemoveFromCart(itemId) {
+    setCartItems((items) => items.filter((item) => item.id !== itemId));
   }
 
   function scrollToProducts() {
@@ -40,7 +71,13 @@ function App() {
     <div className="app">
       <div className="status_bar" aria-hidden="true" />
 
-      <Header cartCount={cartCount} />
+      <Header
+        cartCount={cartItems.length}
+        searchTerm={searchTerm}
+        onSearchChange={setSearchTerm}
+        onSearchSubmit={scrollToProducts}
+        onOpenCart={() => cartRef.current?.showModal()}
+      />
 
       <main>
         <h1 className="sr_only">
@@ -53,13 +90,16 @@ function App() {
         <BrandCarousel />
         <ProductShowcase
           sectionRef={productsRef}
+          searchTerm={searchTerm}
           onAddToCart={handleAddToCart}
         />
         <OurBrandsSection onAddToCart={handleAddToCart} />
         <NewSection onAddToCart={handleAddToCart} />
         <PromoBanner />
-        <BottomNavigation />
+        <BottomNavigation onNavigate={handleNavigate} />
       </main>
+
+      <Cart ref={cartRef} items={cartItems} onRemove={handleRemoveFromCart} />
 
       {confirmation && (
         <div className="cart_confirmation" role="status" aria-live="polite">
