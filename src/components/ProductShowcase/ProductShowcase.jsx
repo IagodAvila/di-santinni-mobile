@@ -159,12 +159,28 @@ const productsByTab = {
   ],
 };
 
-function ProductShowcase({ sectionRef, onAddToCart }) {
+const allProducts = Object.values(productsByTab).flat();
+
+function normalize(text) {
+  return text.normalize("NFD").replace(/\p{M}/gu, "").toLowerCase();
+}
+
+function ProductShowcase({ sectionRef, searchTerm = "", onAddToCart }) {
   const [selectedTab, setSelectedTab] = useState("Masculino");
-  const products = productsByTab[selectedTab];
+  const query = normalize(searchTerm.trim());
+  const products = query
+    ? allProducts.filter((product) =>
+        normalize(`${product.brand} ${product.name}`).includes(query),
+      )
+    : productsByTab[selectedTab];
 
   return (
     <section className="product_showcase" ref={sectionRef}>
+      {query ? (
+        <p className="product_search_summary" role="status">
+          {products.length} resultado(s) para “{searchTerm.trim()}”
+        </p>
+      ) : (
       <div
         className="product_tabs"
         role="tablist"
@@ -189,6 +205,7 @@ function ProductShowcase({ sectionRef, onAddToCart }) {
           ))}
         </div>
       </div>
+      )}
 
       <div className="product_showcase_content">
         {products.map((product) => (

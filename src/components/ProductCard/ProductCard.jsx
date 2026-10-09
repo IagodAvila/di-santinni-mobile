@@ -64,7 +64,7 @@ function ProductCard({
         <button
           className="product_card_buy"
           type="button"
-          onClick={() => onAddToCart?.(name)}
+          onClick={() => onAddToCart?.({ name, price, image })}
         >
           COMPRAR AGORA
         </button>

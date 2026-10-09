@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { House, ShoppingBag, CreditCard, UserRound } from "lucide-react";
 import "./BottomNavigation.css";
 
@@ -10,15 +9,14 @@ const navigationItems = [
   { id: "profile", label: "Perfil", icon: UserRound },
 ];
 
-function BottomNavigation() {
-  const [activeItem, setActiveItem] = useState("home");
+function BottomNavigation({ onNavigate }) {
 
   return (
     <nav className="bottom_navigation" aria-label="Navegação principal">
       <div className="bottom_navigation_items">
         {navigationItems.map((item) => {
           const Icon = item.icon;
-          const isActive = activeItem === item.id;
+          const isActive = item.id === "home";
 
           return (
             <button
@@ -28,8 +26,8 @@ function BottomNavigation() {
                 isActive ? "bottom_navigation_button_active" : ""
               }`}
               aria-label={item.label}
-              aria-pressed={isActive}
-              onClick={() => setActiveItem(item.id)}
+              aria-current={isActive ? "page" : undefined}
+              onClick={() => onNavigate(item)}
             >
               {item.id === "club" ? (
                 <span className="bottom_navigation_ds_plus" aria-hidden="true">
