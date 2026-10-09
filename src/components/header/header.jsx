@@ -5,9 +5,14 @@ import searchIcon from "../../assets/search_icon.svg";
 import shoppingCartIcon from "../../assets/shopping_cart.svg";
 import "./header.css";
 
-function Header({ cartCount }) {
+function Header({
+  cartCount,
+  searchTerm,
+  onSearchChange,
+  onSearchSubmit,
+  onOpenCart,
+}) {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
   const searchInputRef = useRef(null);
 
   useEffect(() => {
@@ -15,6 +20,11 @@ function Header({ cartCount }) {
       searchInputRef.current?.focus();
     }
   }, [isSearchOpen]);
+
+  function closeSearch() {
+    setIsSearchOpen(false);
+    onSearchChange("");
+  }
 
   return (
     <header className="header">
@@ -24,7 +34,7 @@ function Header({ cartCount }) {
         aria-label={isSearchOpen ? "Fechar pesquisa" : "Pesquisar"}
         aria-expanded={isSearchOpen}
         aria-controls="mobile-search"
-        onClick={() => setIsSearchOpen((isOpen) => !isOpen)}
+        onClick={() => (isSearchOpen ? closeSearch() : setIsSearchOpen(true))}
       >
         <img className="header_icon" src={searchIcon} alt="" />
       </button>
@@ -39,6 +49,7 @@ function Header({ cartCount }) {
         className="header_button header_cart"
         type="button"
         aria-label="Abrir sacola de compras"
+        onClick={onOpenCart}
       >
         <img className="header_icon" src={shoppingCartIcon} alt="" />
 
@@ -52,7 +63,11 @@ function Header({ cartCount }) {
           id="mobile-search"
           className="header_search"
           role="search"
-          onSubmit={(event) => event.preventDefault()}
+          onSubmit={(event) => {
+            event.preventDefault();
+            searchInputRef.current?.blur();
+            onSearchSubmit();
+          }}
         >
           <img className="header_search_icon" src={searchIcon} alt="" />
           <input
@@ -61,16 +76,16 @@ function Header({ cartCount }) {
             value={searchTerm}
             placeholder="O que você está procurando?"
             aria-label="Buscar produtos"
-            onChange={(event) => setSearchTerm(event.target.value)}
+            onChange={(event) => onSearchChange(event.target.value)}
             onKeyDown={(event) => {
-              if (event.key === "Escape") setIsSearchOpen(false);
+              if (event.key === "Escape") closeSearch();
             }}
           />
           <button
             className="header_search_close"
             type="button"
             aria-label="Fechar pesquisa"
-            onClick={() => setIsSearchOpen(false)}
+            onClick={closeSearch}
           >
             <X size={18} strokeWidth={1.6} />
           </button>
